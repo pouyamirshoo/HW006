@@ -10,7 +10,13 @@ public class Writer {
         public Writer() {
         }
 
-        public Writer(String firstname, String lastname, int age, Books[] books) {
+    public Writer(String firstname, String lastname, int age) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+    }
+
+    public Writer(String firstname, String lastname, int age, Books[] books) {
             this.firstname = firstname;
             this.lastname = lastname;
             this.age = age;
