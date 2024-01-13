@@ -16,5 +16,7 @@ public class WriterRepository {
         preparedStatement.setString(1, writer.getFirstname());
         preparedStatement.setString(2, writer.getLastname());
         preparedStatement.setInt(3, writer.getAge());
+
+        preparedStatement.executeUpdate();
     }
 }
