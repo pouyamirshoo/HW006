@@ -1,5 +1,6 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class WriterRepository {
@@ -18,5 +19,24 @@ public class WriterRepository {
         preparedStatement.setInt(3, writer.getAge());
 
         preparedStatement.executeUpdate();
+    }
+
+    public Writer loud(int writerId) throws SQLException {
+        Connection connection = jdbcConnection.getConnection();
+
+        String findWriter = "SELECT * FROM writers WHERE writer_id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(findWriter);
+        preparedStatement.setInt(1, writerId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if(resultSet.next()) {
+            String firstName = resultSet.getString("firstname");
+            String lastname = resultSet.getString("lastname");
+            int age = resultSet.getInt("age");
+            Writer writer = new Writer(firstName,lastname,age);
+            return writer;
+        }
+        else
+            return null;
+
     }
 }
