@@ -1,9 +1,6 @@
 import java.util.Arrays;
 
 public class Writer {
-    import java.util.Arrays;
-
-    public class Writer {
         private int writerId;
         private String firstname;
         private String lastname;
@@ -71,4 +68,4 @@ public class Writer {
                     '}';
         }
     }
-}
+
