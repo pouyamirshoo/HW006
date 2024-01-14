@@ -15,7 +15,14 @@ public class Books {
             this.writer = writer;
         }
 
-        public int getBookId() {
+    public Books(int bookId, String bookName, String yearOfPublish, int writer) {
+        this.bookId = bookId;
+        this.bookName = bookName;
+        this.yearOfPublish = yearOfPublish;
+        this.writer = writer;
+    }
+
+    public int getBookId() {
             return bookId;
         }
 
