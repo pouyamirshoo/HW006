@@ -48,4 +48,39 @@ public class BookRepository {
         preparedStatement.executeUpdate();
 
     }
+    public int lengthOfArray(int writerId) throws SQLException {
+        Connection connection = jdbcConnection.getConnection();
+
+        int length = 0;
+
+        String selectBooks = "SELECT * FROM books WHERE writer_id_fk = ?;";
+        PreparedStatement preparedStatement = connection.prepareStatement(selectBooks);
+
+        preparedStatement.setInt(1, writerId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            length++;
+        }
+        return length;
+    }
+    public Books[] arrayOfBooks(int writerId) throws SQLException {
+        Connection connection = jdbcConnection.getConnection();
+        Books [] books = new Books[lengthOfArray(writerId)];
+        int i = 0;
+
+        String selectBooks = "SELECT * FROM books WHERE writer_id_fk = ?;";
+        PreparedStatement preparedStatement = connection.prepareStatement(selectBooks);
+
+        preparedStatement.setInt(1, writerId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            String bookName = resultSet.getString("book_name");
+            String yearOfPublish = resultSet.getString("year_of_publish");
+            int writer = resultSet.getInt("writer_id_fk");
+            Books book = new Books(bookName,yearOfPublish,writer);
+            books[i] = book;
+            i++;
+        }
+        return books;
+    }
 }
