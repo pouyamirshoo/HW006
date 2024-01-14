@@ -16,6 +16,14 @@ public class Writer {
         this.age = age;
     }
 
+    public Writer(int writerId, String firstname, String lastname, int age, Books[] books) {
+        this.writerId = writerId;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+        this.books = books;
+    }
+
     public Writer(String firstname, String lastname, int age, Books[] books) {
             this.firstname = firstname;
             this.lastname = lastname;
