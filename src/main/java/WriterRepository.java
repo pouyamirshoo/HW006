@@ -5,6 +5,7 @@ import java.sql.SQLException;
 
 public class WriterRepository {
     private final Jdbcconnection jdbcConnection = new Jdbcconnection();
+    private final BookRepository bookRepository = new BookRepository();
 
     public WriterRepository() throws SQLException {
     }
@@ -32,11 +33,11 @@ public class WriterRepository {
             String firstName = resultSet.getString("firstname");
             String lastname = resultSet.getString("lastname");
             int age = resultSet.getInt("age");
-            Writer writer = new Writer(firstName,lastname,age);
+            Books [] books = bookRepository.arrayOfBooks(writerId);
+            Writer writer = new Writer(firstName,lastname,age,books);
             return writer;
         }
         else
             return null;
-
     }
 }
