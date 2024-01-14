@@ -1,3 +1,8 @@
+package Services;
+
+import Fields.Writer;
+import Repository.WriterRepository;
+
 import java.sql.SQLException;
 import java.util.Scanner;
 

@@ -1,3 +1,5 @@
+package Fields;
+
 public class Books {
         private int bookId;
         private String bookName;
@@ -47,7 +49,7 @@ public class Books {
 
         @Override
         public String toString() {
-            return "Books{" +
+            return "Fields.Books{" +
                     "bookId=" + bookId +
                     ", bookName='" + bookName + '\'' +
                     ", yearOfPublish=" + yearOfPublish +

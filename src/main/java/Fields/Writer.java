@@ -1,3 +1,7 @@
+package Fields;
+
+import Fields.Books;
+
 import java.util.Arrays;
 
 public class Writer {
@@ -73,7 +77,7 @@ public class Writer {
 
         @Override
         public String toString() {
-            return "Writer{" +
+            return "Fields.Writer{" +
                     "writerId=" + writerId +
                     ", firstname='" + firstname + '\'' +
                     ", lastname='" + lastname + '\'' +

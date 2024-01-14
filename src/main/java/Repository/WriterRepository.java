@@ -1,3 +1,9 @@
+package Repository;
+
+import Fields.Books;
+import Fields.Writer;
+import Repository.BookRepository;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,7 +39,7 @@ public class WriterRepository {
             String firstName = resultSet.getString("firstname");
             String lastname = resultSet.getString("lastname");
             int age = resultSet.getInt("age");
-            Books [] books = bookRepository.arrayOfBooks(writerId);
+            Books[] books = bookRepository.arrayOfBooks(writerId);
             Writer writer = new Writer(firstName,lastname,age,books);
             return writer;
         }
