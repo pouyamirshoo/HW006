@@ -38,4 +38,14 @@ public class BookRepository {
             return null;
 
     }
+    public void delete (Books books) throws SQLException {
+        Connection connection = jdbcConnection.getConnection();
+
+        String deleteRow = "DELETE FROM books WHERE book_name = ?;";
+        PreparedStatement preparedStatement = connection.prepareStatement(deleteRow);
+
+        preparedStatement.setString(1, books.getBookName());
+        preparedStatement.executeUpdate();
+
+    }
 }
