@@ -1,6 +1,4 @@
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class BookRepository {
     private final Jdbcconnection jdbcConnection = new Jdbcconnection();
@@ -21,5 +19,23 @@ public class BookRepository {
         preparedStatement.setInt(3, book.getWriter());
 
         preparedStatement.executeUpdate();
+    }
+    public Books loud(int bookID) throws SQLException {
+        Connection connection = jdbcConnection.getConnection();
+
+        String findBook = "SELECT * FROM Books WHERE book_id = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(findBook);
+        preparedStatement.setInt(1, bookID);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if(resultSet.next()) {
+            String bookName = resultSet.getString("book_name");
+            String yearOfPublish = resultSet.getString("year_of_publish");
+            int writer = resultSet.getInt("writer_id_fk");
+            Books book = new Books(bookName,yearOfPublish,writer);
+            return book;
+        }
+        else
+            return null;
+
     }
 }
