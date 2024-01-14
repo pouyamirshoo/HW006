@@ -28,7 +28,7 @@ public class WriterService {
         sc.nextLine();
 
         Writer writer = writerRepository.loud(id);
-        System.out.println(writer.getFirstname() + "," + writer.getLastname() + "," + writer.getAge());
+        System.out.println(writer.toString());
 
     }
 }
