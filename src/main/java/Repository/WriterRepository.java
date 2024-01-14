@@ -36,11 +36,12 @@ public class WriterRepository {
         preparedStatement.setInt(1, writerId);
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet.next()) {
+            int key = resultSet.getInt("writer_id");
             String firstName = resultSet.getString("firstname");
             String lastname = resultSet.getString("lastname");
             int age = resultSet.getInt("age");
             Books[] books = bookRepository.arrayOfBooks(writerId);
-            Writer writer = new Writer(firstName,lastname,age,books);
+            Writer writer = new Writer(key,firstName,lastname,age,books);
             return writer;
         }
         else
