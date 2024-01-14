@@ -21,4 +21,13 @@ public class BooksService {
         Books book = new Books(bookName,yearOfPublish,id);
         bookRepository.save(book);
     }
+    public void showBook() throws SQLException {
+        System.out.println("plz enter book id");
+        int id = sc.nextInt();
+        sc.nextLine();
+
+        Books book  = bookRepository.loud(id);
+        System.out.println(book.getBookName() + "," + book.getYearOfPublish() + "," + book.getWriter());
+
+    }
 }
