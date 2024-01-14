@@ -78,10 +78,11 @@ public class BookRepository {
         preparedStatement.setInt(1, writerId);
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()){
+            int key = resultSet.getInt("book_id");
             String bookName = resultSet.getString("book_name");
             String yearOfPublish = resultSet.getString("year_of_publish");
             int writer = resultSet.getInt("writer_id_fk");
-            Books book = new Books(bookName,yearOfPublish,writer);
+            Books book = new Books(key,bookName,yearOfPublish,writer);
             books[i] = book;
             i++;
         }
