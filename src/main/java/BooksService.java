@@ -28,6 +28,19 @@ public class BooksService {
 
         Books book  = bookRepository.loud(id);
         System.out.println(book.getBookName() + "," + book.getYearOfPublish() + "," + book.getWriter());
+    }
+    public void deleteBook() throws SQLException {
+        System.out.println("Please enter your book name:");
+        String bookName = sc.nextLine();
 
+        System.out.println("Please enter your date of publish as MM/dd/yyyy:");
+        String yearOfPublish = sc.nextLine();
+
+        System.out.println("Please enter the writer id:");
+        int id = sc.nextInt();
+        sc.nextLine();
+
+        Books book = new Books(bookName,yearOfPublish,id);
+        bookRepository.delete(book);
     }
 }
